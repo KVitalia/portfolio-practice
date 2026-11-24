@@ -1,0 +1,140 @@
+import { Meta, ColorPalette, ColorItem, Typeset } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Tokens" />
+
+# Tokens
+
+Design tokens for the portfolio site. Every value below lives in `@theme` in
+[`src/app/globals.css`](../app/globals.css) — that file is the source of truth; this page only
+displays it.
+
+## Colors
+
+<ColorPalette>
+  <ColorItem
+    title="canvas"
+    subtitle="Page background"
+    colors={{ canvas: 'var(--color-canvas)' }}
+  />
+  <ColorItem
+    title="surface"
+    subtitle="Cards and fields (suggested — not yet used on the live page)"
+    colors={{ surface: 'var(--color-surface)' }}
+  />
+  <ColorItem
+    title="line"
+    subtitle="Decorative dividers and card borders"
+    colors={{ line: 'var(--color-line)' }}
+  />
+  <ColorItem
+    title="accent"
+    subtitle="Buttons, borders, footer links — 4.6:1 on canvas"
+    colors={{ accent: 'var(--color-accent)' }}
+  />
+  <ColorItem
+    title="accent-logo"
+    subtitle="Large/bold wordmark only — 3.6:1, passes the large-text 3:1 rule, not normal-text 4.5:1"
+    colors={{ 'accent-logo': 'var(--color-accent-logo)' }}
+  />
+  <ColorItem
+    title="ink"
+    subtitle="Primary text — 15:1 on canvas"
+    colors={{ ink: 'var(--color-ink)' }}
+  />
+  <ColorItem
+    title="ink-muted"
+    subtitle="Secondary text; also the border for unfilled buttons/fields (≥3:1)"
+    colors={{ 'ink-muted': 'var(--color-ink-muted)' }}
+  />
+  <ColorItem
+    title="danger"
+    subtitle="Error text and field border — 5.1:1 on canvas, orange-leaning so it reads as distinct from accent"
+    colors={{ danger: 'var(--color-danger)' }}
+  />
+</ColorPalette>
+
+## Type
+
+Two families: **Istok Web** (`font-istok`, weight 700 — wordmark only) and
+**Wix Madefor Text** (`font-sans`, the default — everything else). Both support Cyrillic.
+Letter-spacing is `0` across the whole scale.
+
+<Typeset
+  fontSizes={['0.75rem', '1rem', '1.25rem', '2rem', '3.5rem']}
+  fontWeight={400}
+  sampleText="Design built on how people choose"
+  fontFamily="var(--font-sans)"
+/>
+
+<table>
+  <thead>
+    <tr><th>Token</th><th>Size</th><th>Line-height</th><th>Weight</th><th>Role</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>text-caption</code></td><td>12px</td><td>1.3</td><td>600</td><td>Tags, small meta labels</td></tr>
+    <tr><td><code>text-body</code></td><td>16px</td><td>1.5</td><td>400</td><td>Nav, body copy, links, buttons</td></tr>
+    <tr><td><code>text-lead</code></td><td>20px</td><td>1.6</td><td>400</td><td>Hero intro paragraph</td></tr>
+    <tr><td><code>text-heading</code></td><td>32px</td><td>1.25</td><td>600</td><td>Section and card headings</td></tr>
+    <tr><td><code>text-display</code></td><td>56px</td><td>1.1</td><td>700</td><td>Wordmark, hero-scale display text</td></tr>
+  </tbody>
+</table>
+
+This scale condenses the many one-off sizes from the first draft (11, 14, 18, 24, 26, 28, 36,
+40, 48, 64px) into five steps. Where a specific component still needs an in-between size at a
+breakpoint, step up to the next rung rather than introducing a new value.
+
+## Radius
+
+All corners in the layout are right angles — no rounding anywhere.
+
+<div style={{ display: 'flex', gap: '24px', marginTop: '16px' }}>
+  <div className="rounded-control border border-ink-muted bg-surface" style={{ width: 96, height: 56, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    rounded-control
+  </div>
+  <div className="rounded-card border border-line bg-surface" style={{ width: 96, height: 96, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    rounded-card
+  </div>
+</div>
+
+## Image proportions
+
+<div style={{ display: 'flex', gap: '24px', marginTop: '16px', flexWrap: 'wrap' }}>
+  <div className="aspect-hero bg-line" style={{ width: 160 }} />
+  <div className="aspect-band bg-line" style={{ width: 160 }} />
+  <div className="aspect-portrait bg-line" style={{ width: 100 }} />
+  <div className="aspect-cover bg-line" style={{ width: 160 }} />
+</div>
+
+<table>
+  <thead>
+    <tr><th>Token</th><th>Ratio</th><th>Used for</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>aspect-hero</code></td><td>5:4</td><td>Hero composite block</td></tr>
+    <tr><td><code>aspect-band</code></td><td>16:9</td><td>Gradient/photo band inside the hero block</td></tr>
+    <tr><td><code>aspect-portrait</code></td><td>1:1</td><td>Portrait photo</td></tr>
+    <tr><td><code>aspect-cover</code></td><td>3:2</td><td>Case thumbnail</td></tr>
+  </tbody>
+</table>
+
+## Spacing
+
+Only five steps are allowed: 8, 12, 16, 24, 32px — Tailwind's `2`, `3`, `4`, `6`, `8`.
+
+<div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px', marginTop: '16px' }}>
+  <div className="p-2 bg-line" style={{ display: 'inline-block' }}>
+    <div className="bg-surface" style={{ width: 24, height: 24 }} />
+  </div>
+  <div className="p-3 bg-line" style={{ display: 'inline-block' }}>
+    <div className="bg-surface" style={{ width: 24, height: 24 }} />
+  </div>
+  <div className="p-4 bg-line" style={{ display: 'inline-block' }}>
+    <div className="bg-surface" style={{ width: 24, height: 24 }} />
+  </div>
+  <div className="p-6 bg-line" style={{ display: 'inline-block' }}>
+    <div className="bg-surface" style={{ width: 24, height: 24 }} />
+  </div>
+  <div className="p-8 bg-line" style={{ display: 'inline-block' }}>
+    <div className="bg-surface" style={{ width: 24, height: 24 }} />
+  </div>
+</div>

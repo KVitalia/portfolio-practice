@@ -6,6 +6,12 @@
       "runtimeExecutable": "/Users/vitaliia.kumeska/portfolio-practice/.claude/dev-with-node.sh",
       "runtimeArgs": [],
       "port": 3000
+    },
+    {
+      "name": "storybook",
+      "runtimeExecutable": "/Users/vitaliia.kumeska/portfolio-practice/.claude/storybook-with-node.sh",
+      "runtimeArgs": [],
+      "port": 6006
     }
   ]
 }
