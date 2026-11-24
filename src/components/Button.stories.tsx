@@ -23,7 +23,7 @@ Button triggers a single action, in-page or on submit. It never carries a link t
 **Variants**
 
 - \`main\` — filled with \`accent\`, text in \`surface\`. For the one most important action in a view. Text-on-fill contrast is ~5.1:1 against \`accent\` (passes the 4.5:1 rule for regular text).
-- \`secondary\` — no fill, \`ink-muted\` border, text in \`ink\`. For actions beside a main button. The \`ink-muted\` border holds ~7.6:1 against \`canvas\` (passes the 3:1 rule for a border/non-text element).
+- \`secondary\` — no fill, \`accent\` border, text in \`ink\`. For actions beside a main button. The \`accent\` border holds ~4.6:1 against \`canvas\` (passes the 3:1 rule for a border/non-text element).
 
 **States**
 
@@ -32,7 +32,7 @@ Button triggers a single action, in-page or on submit. It never carries a link t
 - Focus (keyboard) — a 2px \`ink\` outline, offset from the button, visible on both variants (contrast well above 3:1 against \`canvas\` and \`surface\`).
 - Disabled — set with \`disabled\`, not the native \`disabled\` attribute: the button is marked \`aria-disabled\` and stays focusable, so keyboard and screen-reader users can still reach it. Pass \`disabledReason\`; it renders under the button and is linked to it with \`aria-describedby\` so screen readers announce why the action is unavailable.
 
-**Tokens used:** \`accent\`, \`surface\`, \`ink\`, \`ink-muted\`, \`rounded-control\`, \`text-body\`, \`text-lead\`, \`text-caption\`.
+**Tokens used:** \`accent\`, \`surface\`, \`ink\`, \`ink-muted\` (disabled explanation text), \`rounded-control\`, \`text-body\`, \`text-lead\`, \`text-caption\`.
 
 **When to use:** for an action the user triggers directly (submit, confirm, add). Use \`main\` once per view for the primary action; use \`secondary\` for the actions next to it. Not for navigation to another page — use a text link there instead.
 

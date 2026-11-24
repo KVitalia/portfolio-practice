@@ -25,7 +25,7 @@ const sizeClasses: Record<ButtonSize, string> = {
 
 const variantClasses: Record<ButtonVariant, string> = {
   main: "bg-accent text-surface border border-accent",
-  secondary: "bg-transparent text-ink border border-ink-muted",
+  secondary: "bg-transparent text-ink border border-accent",
 };
 
 /**

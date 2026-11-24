@@ -24,7 +24,7 @@ Defined in `@theme` in [src/app/globals.css](src/app/globals.css). This is the o
 
 Each has a Storybook story (Controls panel) and a docs page under **Components** in the Storybook sidebar.
 
-- **Button** — [src/components/Button.tsx](src/components/Button.tsx), story: [src/components/Button.stories.tsx](src/components/Button.stories.tsx). Props: `variant` (`main` | `secondary`), `size` (`normal` | `large`), `disabled`, `disabledReason`. `main` is accent-filled for the one primary action in a view; `secondary` is an outline button (`ink-muted` border) for actions beside it. Disabled state uses `aria-disabled` (not the native `disabled` attribute) so the button stays focusable, with `disabledReason` shown under it via `aria-describedby`.
+- **Button** — [src/components/Button.tsx](src/components/Button.tsx), story: [src/components/Button.stories.tsx](src/components/Button.stories.tsx). Props: `variant` (`main` | `secondary`), `size` (`normal` | `large`), `disabled`, `disabledReason`. `main` is accent-filled for the one primary action in a view; `secondary` is an outline button (`accent` border) for actions beside it. Disabled state uses `aria-disabled` (not the native `disabled` attribute) so the button stays focusable, with `disabledReason` shown under it via `aria-describedby`.
 
 ## Rules
 
