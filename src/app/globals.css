@@ -50,6 +50,9 @@
   --aspect-band: 16 / 9;
   --aspect-portrait: 1 / 1;
   --aspect-cover: 3 / 2;
+
+  /* Max widths: caps a control's width on wide (desktop) screens */
+  --max-width-field: 35rem; /* 560px */
 }
 
 body {

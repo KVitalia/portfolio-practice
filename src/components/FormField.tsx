@@ -140,7 +140,7 @@ export function FormField(formFieldProps: FormFieldProps) {
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex w-full max-w-field flex-col gap-2">
       <label htmlFor={fieldId} className="text-caption text-ink">
         {label}
       </label>

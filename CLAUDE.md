@@ -18,6 +18,7 @@ Defined in `@theme` in [src/app/globals.css](src/app/globals.css). This is the o
 - Text scale: `text-caption`, `text-body`, `text-lead`, `text-heading`, `text-display` (each pairs size with its own line-height/letter-spacing/weight).
 - Image proportions: `aspect-hero`, `aspect-band`, `aspect-portrait`, `aspect-cover`.
 - Spacing: use only the steps that equal 8/12/16/24/32px — Tailwind's `2`/`3`/`4`/`6`/`8` (e.g. `p-2`, `gap-4`, `px-6`).
+- Max widths: `max-w-field` (560px) — caps a control's width on wide/desktop screens; the control still shrinks to fill a narrower (mobile) container.
 - See the "Foundations/Tokens" page in Storybook for a visual reference.
 
 ## Components
@@ -25,7 +26,7 @@ Defined in `@theme` in [src/app/globals.css](src/app/globals.css). This is the o
 Each has a Storybook story (Controls panel) and a docs page under **Components** in the Storybook sidebar.
 
 - **Button** — [src/components/Button.tsx](src/components/Button.tsx), story: [src/components/Button.stories.tsx](src/components/Button.stories.tsx). Props: `variant` (`main` | `secondary`), `size` (`normal` | `large`), `disabled`, `disabledReason`. `main` is accent-filled for the one primary action in a view; `secondary` is an outline button (`accent` border) for actions beside it. Disabled state uses `aria-disabled` (not the native `disabled` attribute) so the button stays focusable, with `disabledReason` shown under it via `aria-describedby`.
-- **FormField** — [src/components/FormField.tsx](src/components/FormField.tsx), story: [src/components/FormField.stories.tsx](src/components/FormField.stories.tsx). Props: `label` (caption, always above the field), `type` (`text` | `email` | `tel`, ignored when `multiline`), `multiline` (renders a taller `<textarea>` instead of `<input>`, for name/address/phone vs. a longer message), `placeholder`, `defaultValue`, `error`, `errorText`, `disabled`. Border is `ink-muted` (not `line`), darkens to `ink` on hover, `ink` focus outline. `error` turns the border and an inline icon `danger` and shows `errorText` under the field via `aria-describedby`. Disabled state uses `aria-disabled` (not the native `disabled` attribute) so the field stays focusable, rejecting typing/paste instead of blocking focus.
+- **FormField** — [src/components/FormField.tsx](src/components/FormField.tsx), story: [src/components/FormField.stories.tsx](src/components/FormField.stories.tsx). Props: `label` (caption, always above the field), `type` (`text` | `email` | `tel`, ignored when `multiline`), `multiline` (renders a taller `<textarea>` instead of `<input>`, for name/address/phone vs. a longer message), `placeholder`, `defaultValue`, `error`, `errorText`, `disabled`. Capped at `max-w-field` (560px) so it doesn't stretch full-width on desktop, while still filling a narrower (mobile) container. Border is `ink-muted` (not `line`), darkens to `ink` on hover, `ink` focus outline. `error` turns the border and an inline icon `danger` and shows `errorText` under the field via `aria-describedby`. Disabled state uses `aria-disabled` (not the native `disabled` attribute) so the field stays focusable, rejecting typing/paste instead of blocking focus.
 
 ## Rules
 
