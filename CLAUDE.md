@@ -25,6 +25,7 @@ Defined in `@theme` in [src/app/globals.css](src/app/globals.css). This is the o
 Each has a Storybook story (Controls panel) and a docs page under **Components** in the Storybook sidebar.
 
 - **Button** — [src/components/Button.tsx](src/components/Button.tsx), story: [src/components/Button.stories.tsx](src/components/Button.stories.tsx). Props: `variant` (`main` | `secondary`), `size` (`normal` | `large`), `disabled`, `disabledReason`. `main` is accent-filled for the one primary action in a view; `secondary` is an outline button (`accent` border) for actions beside it. Disabled state uses `aria-disabled` (not the native `disabled` attribute) so the button stays focusable, with `disabledReason` shown under it via `aria-describedby`.
+- **FormField** — [src/components/FormField.tsx](src/components/FormField.tsx), story: [src/components/FormField.stories.tsx](src/components/FormField.stories.tsx). Props: `label` (caption, always above the field), `defaultValue`, `error`, `errorText`, `disabled`. Border is `ink-muted` (not `line`), darkens to `ink` on hover, `ink` focus outline. `error` turns the border and an inline icon `danger` and shows `errorText` under the field via `aria-describedby`. Disabled state uses `aria-disabled` (not the native `disabled` attribute) so the field stays focusable, rejecting typing/paste instead of blocking focus.
 
 ## Rules
 
