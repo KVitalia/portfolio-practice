@@ -79,7 +79,7 @@ export function Navigation({ items, activeHref }: NavigationProps) {
   }
 
   return (
-    <nav className="relative bg-surface" aria-label="Site">
+    <nav className="relative bg-canvas" aria-label="Site">
       <div className="flex items-center justify-end gap-6 px-4 py-4">
         <ul className="hidden md:flex items-center gap-6">
           {items.map((item) => (
@@ -110,7 +110,7 @@ export function Navigation({ items, activeHref }: NavigationProps) {
       {open ? (
         <ul
           id={menuId}
-          className="absolute inset-x-0 top-full z-10 flex flex-col items-end gap-2 border-t border-line bg-surface p-4 md:hidden"
+          className="absolute inset-x-0 top-full z-10 flex flex-col items-end gap-2 border-t border-line bg-canvas p-4 md:hidden"
         >
           {items.map((item) => (
             <li key={item.href}>

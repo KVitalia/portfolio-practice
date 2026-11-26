@@ -29,14 +29,14 @@ Navigation is the site menu. It aligns to the right of its container, leaving ro
 
 - Default — \`ink-muted\` text.
 - Hover — darkens to \`ink\`.
-- Focus (keyboard) — a 2px \`ink\` outline, offset from the item (well above the 3:1 rule for non-text elements against \`surface\`).
-- Active item — set via \`activeHref\`; gets \`aria-current="page"\` plus \`accent\` text with an underline (\`accent\` text holds ~5.1:1 against \`surface\`, passing the 4.5:1 rule for regular text).
+- Focus (keyboard) — a 2px \`ink\` outline, offset from the item (well above the 3:1 rule for non-text elements against \`canvas\`).
+- Active item — set via \`activeHref\`; gets \`aria-current="page"\` plus \`accent\` text with an underline (\`accent\` text holds ~4.6:1 against \`canvas\`, passing the 4.5:1 rule for regular text).
 
 **Narrow screen**
 
-Below the \`md\` breakpoint the item row is replaced by a toggle button (hamburger/close icon). Opening it reveals the menu as an absolutely positioned panel over the page, closed by Escape, by picking an item, or by the toggle button.
+Below the \`md\` breakpoint the item row is replaced by a toggle button (hamburger/close icon). Opening it reveals the menu as an absolutely positioned panel over the page, matching the page's \`canvas\` background, closed by Escape, by picking an item, or by the toggle button.
 
-**Tokens used:** \`surface\`, \`line\` (mobile-menu divider, decorative only), \`ink\`, \`ink-muted\`, \`accent\`, \`text-body\`, \`font-sans\`.
+**Tokens used:** \`canvas\` (matches the page background, not \`surface\`), \`line\` (mobile-menu divider, decorative only), \`ink\`, \`ink-muted\`, \`accent\`, \`text-body\`, \`font-sans\`.
 
 **When to use:** for the site's primary menu, once per page (header). Not for in-page jump links or breadcrumbs.
 
