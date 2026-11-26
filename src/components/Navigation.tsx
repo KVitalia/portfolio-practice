@@ -12,6 +12,14 @@ type NavigationProps = {
   items: NavigationItem[];
   /** `href` of the current page; that item gets `aria-current="page"` and the active style. */
   activeHref?: string;
+  /**
+   * Extra classes for the root `<nav>`. Pass `flex-1` (or similar) when
+   * Navigation sits beside other flex siblings (e.g. a logo and a button) so
+   * it actually grows to fill the row instead of shrinking to just its
+   * toggle button's width — the mobile dropdown is positioned relative to
+   * this element, so a too-narrow box makes the open menu's items misalign.
+   */
+  className?: string;
 };
 
 function MenuIcon({ open }: { open: boolean }) {
@@ -52,7 +60,7 @@ function MenuIcon({ open }: { open: boolean }) {
  * the page (it doesn't push page content down) and closes on Escape, on
  * selecting an item, or by toggling the button again.
  */
-export function Navigation({ items, activeHref }: NavigationProps) {
+export function Navigation({ items, activeHref, className }: NavigationProps) {
   const [open, setOpen] = useState(false);
   const menuId = useId();
 
@@ -79,7 +87,7 @@ export function Navigation({ items, activeHref }: NavigationProps) {
   }
 
   return (
-    <nav className="relative bg-canvas" aria-label="Site">
+    <nav className={["relative bg-canvas", className].filter(Boolean).join(" ")} aria-label="Site">
       <div className="flex items-center justify-end gap-6 px-4 py-4">
         <ul className="hidden md:flex items-center gap-6">
           {items.map((item) => (
@@ -110,7 +118,7 @@ export function Navigation({ items, activeHref }: NavigationProps) {
       {open ? (
         <ul
           id={menuId}
-          className="absolute inset-x-0 top-full z-10 flex flex-col items-end gap-2 border-t border-line bg-canvas p-4 md:hidden"
+          className="absolute top-full right-0 z-10 flex w-max flex-col items-end gap-2 border border-line bg-surface p-4 md:hidden"
         >
           {items.map((item) => (
             <li key={item.href}>

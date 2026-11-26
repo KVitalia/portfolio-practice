@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section className="grid w-full grid-cols-1 items-center gap-8 px-6 py-8 sm:px-8 md:grid-cols-2 md:gap-6 lg:gap-8">
       <div className="flex max-w-field flex-col gap-6">
-        <h1 className="text-display text-ink">
+        <h1 className="text-heading text-ink md:text-display">
           Design built on how
           <br />
           people choose

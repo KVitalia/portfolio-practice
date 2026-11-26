@@ -24,6 +24,7 @@ Navigation is the site menu. It aligns to the right of its container, leaving ro
 | --- | --- | --- |
 | \`items\` | \`{ label, href }[]\` | — |
 | \`activeHref\` | \`href\` of the current page | — |
+| \`className\` | extra classes for the root \`<nav>\` — pass \`flex-1\` (or similar) when it sits beside other flex siblings (a logo, a button) so it actually grows to fill the row | — |
 
 **States**
 
@@ -34,9 +35,9 @@ Navigation is the site menu. It aligns to the right of its container, leaving ro
 
 **Narrow screen**
 
-Below the \`md\` breakpoint the item row is replaced by a toggle button (hamburger/close icon). Opening it reveals the menu as an absolutely positioned panel over the page, matching the page's \`canvas\` background, closed by Escape, by picking an item, or by the toggle button.
+Below the \`md\` breakpoint the item row is replaced by a toggle button (hamburger/close icon). Opening it reveals the menu as an absolutely positioned panel anchored to the toggle button's right edge, sized to its own content (not stretched to the bar's width) — it floats over the page on a solid \`surface\` background (unlike the inline bar, which matches \`canvas\` since it doesn't overlap anything), closed by Escape, by picking an item, or by the toggle button.
 
-**Tokens used:** \`canvas\` (matches the page background, not \`surface\`), \`line\` (mobile-menu divider, decorative only), \`ink\`, \`ink-muted\`, \`accent\`, \`text-body\`, \`font-sans\`.
+**Tokens used:** \`canvas\` (the inline bar, matches the page background), \`surface\` (the floating mobile-menu panel, needs to stand out from the page behind it), \`line\` (mobile-menu panel border, decorative only), \`ink\`, \`ink-muted\`, \`accent\`, \`text-body\`, \`font-sans\`.
 
 **When to use:** for the site's primary menu, once per page (header). Not for in-page jump links or breadcrumbs.
 
@@ -53,6 +54,14 @@ const items = [
 ];
 
 <Navigation items={items} activeHref="/works" />
+
+// Beside a logo and a button in a header row, pass className="flex-1" so
+// Navigation grows to fill the space between them:
+<header className="flex items-center gap-4">
+  <Logo />
+  <Navigation items={items} activeHref="/works" className="flex-1" />
+  <Button>Contact</Button>
+</header>
 \`\`\`
         `,
       },
