@@ -52,8 +52,8 @@ export function WorkCard({
       {...props}
     >
       <div className="flex items-baseline gap-4">
-        <span className="text-heading text-ink">{number}</span>
-        <span className="text-heading text-ink">{title}</span>
+        <span className="text-lead text-ink">{number}</span>
+        <span className="text-lead text-ink">{title}</span>
       </div>
 
       <div className="flex flex-col gap-4 pt-4">
