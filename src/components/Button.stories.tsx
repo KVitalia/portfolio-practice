@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component: `
-Button triggers a single action, in-page, on submit, or a lower-emphasis navigation-style action (\`link\` variant). For a real hyperlink to another page, use an \`<a>\` instead — \`link\` only looks like one.
+Button triggers a single action, in-page, on submit, or a lower-emphasis navigation-style action (\`link\` variant). For a real hyperlink to another page, use an \`<a>\` instead — \`link\` only looks like one. Pass \`href\` when the action is really a same-page anchor jump that should look like a button (e.g. "Write Me" scrolling to \`#contact\`) — it then renders an \`<a>\` with identical styling instead of a \`<button>\`.
 
 **Parameters**
 
@@ -19,6 +19,7 @@ Button triggers a single action, in-page, on submit, or a lower-emphasis navigat
 | \`size\` | \`normal\`, \`large\` | \`normal\` |
 | \`disabled\` | \`boolean\` | \`false\` |
 | \`disabledReason\` | text shown under the button, linked via \`aria-describedby\` while disabled | — |
+| \`href\` | renders an \`<a>\` instead of a \`<button>\`, same styling | — |
 
 **Variants**
 
@@ -53,6 +54,10 @@ import { Button } from "@/components/Button";
 <Button variant="link" onClick={showMore}>
   See all work
 </Button>
+
+<Button variant="secondary" href="#contact">
+  Write Me
+</Button>
 \`\`\`
         `,
       },
@@ -62,6 +67,7 @@ import { Button } from "@/components/Button";
     variant: { control: "select", options: ["main", "secondary", "link"] },
     size: { control: "select", options: ["normal", "large"] },
     disabled: { control: "boolean" },
+    href: { control: "text" },
   },
   args: {
     children: "Submit",

@@ -1,9 +1,17 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+"use client";
+
+import type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  KeyboardEvent,
+  MouseEvent,
+  ReactNode,
+} from "react";
 
 type ButtonVariant = "main" | "secondary" | "link";
 type ButtonSize = "normal" | "large";
 
-type ButtonProps = {
+type ButtonOwnProps = {
   /** Fill style: `main` is the accent-filled button, `secondary` is the outline button, `link` is the underlined text-styled button with a trailing chevron. */
   variant?: ButtonVariant;
   /** Button height and padding. */
@@ -16,7 +24,26 @@ type ButtonProps = {
    */
   disabledReason?: string;
   children: ReactNode;
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "disabled" | "size">;
+  onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  onKeyDown?: (event: KeyboardEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+};
+
+type ButtonAsButtonProps = ButtonOwnProps &
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, "disabled" | "size" | "onClick" | "onKeyDown"> & {
+    /** When omitted, renders a `<button>`. */
+    href?: undefined;
+  };
+
+type ButtonAsAnchorProps = ButtonOwnProps &
+  Omit<
+    AnchorHTMLAttributes<HTMLAnchorElement>,
+    "disabled" | "size" | "onClick" | "onKeyDown" | "href"
+  > & {
+    /** When set, renders an `<a>` styled the same way — for a button-styled action that is really a same-page anchor jump (e.g. a "Write Me" link to `#contact`). For a normal link to another page, use a plain `<a>` instead. */
+    href: string;
+  };
+
+type ButtonProps = ButtonAsButtonProps | ButtonAsAnchorProps;
 
 const sizeClasses: Record<ButtonSize, string> = {
   normal: "h-10 px-4 text-body",
@@ -67,6 +94,10 @@ function ChevronRightIcon({ className }: { className: string }) {
  * `aria-describedby` explanation instead of using the native `disabled`
  * attribute, so screen reader and keyboard users still know the button
  * exists and why it can't be used.
+ *
+ * Pass `href` to render the same styling as an `<a>` instead of a
+ * `<button>` — for a button-styled same-page anchor jump (e.g. "Write Me"
+ * linking to `#contact`), not for a normal link to another page.
  */
 export function Button({
   variant = "main",
@@ -78,46 +109,74 @@ export function Button({
   className,
   onClick,
   onKeyDown,
+  href,
   ...props
 }: ButtonProps) {
   const describedById = disabled && disabledReason ? `${id ?? "button"}-disabled-reason` : undefined;
 
+  const sharedClassName = [
+    "inline-flex items-center justify-center gap-2 rounded-control font-sans transition-colors",
+    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
+    disabled ? "opacity-60 cursor-not-allowed" : hoverClasses[variant],
+    sizeClasses[size],
+    variantClasses[variant],
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const content = (
+    <>
+      {children}
+      {variant === "link" ? <ChevronRightIcon className={linkIconSizeClasses[size]} /> : null}
+    </>
+  );
+
+  function handleClick(event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) {
+    if (disabled) {
+      event.preventDefault();
+      return;
+    }
+    onClick?.(event);
+  }
+
+  function handleKeyDown(event: KeyboardEvent<HTMLButtonElement | HTMLAnchorElement>) {
+    if (disabled && (event.key === "Enter" || event.key === " ")) {
+      event.preventDefault();
+      return;
+    }
+    onKeyDown?.(event);
+  }
+
   return (
     <>
-      <button
-        id={id}
-        type="button"
-        aria-disabled={disabled || undefined}
-        aria-describedby={describedById}
-        onClick={(event) => {
-          if (disabled) {
-            event.preventDefault();
-            return;
-          }
-          onClick?.(event);
-        }}
-        onKeyDown={(event) => {
-          if (disabled && (event.key === "Enter" || event.key === " ")) {
-            event.preventDefault();
-            return;
-          }
-          onKeyDown?.(event);
-        }}
-        className={[
-          "inline-flex items-center justify-center gap-2 rounded-control font-sans transition-colors",
-          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
-          disabled ? "opacity-60 cursor-not-allowed" : hoverClasses[variant],
-          sizeClasses[size],
-          variantClasses[variant],
-          className,
-        ]
-          .filter(Boolean)
-          .join(" ")}
-        {...props}
-      >
-        {children}
-        {variant === "link" ? <ChevronRightIcon className={linkIconSizeClasses[size]} /> : null}
-      </button>
+      {href ? (
+        <a
+          id={id}
+          href={href}
+          aria-disabled={disabled || undefined}
+          aria-describedby={describedById}
+          onClick={handleClick}
+          onKeyDown={handleKeyDown}
+          className={sharedClassName}
+          {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
+        >
+          {content}
+        </a>
+      ) : (
+        <button
+          id={id}
+          type="button"
+          aria-disabled={disabled || undefined}
+          aria-describedby={describedById}
+          onClick={handleClick}
+          onKeyDown={handleKeyDown}
+          className={sharedClassName}
+          {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
+        >
+          {content}
+        </button>
+      )}
       {describedById ? (
         <p id={describedById} className="text-caption text-ink-muted">
           {disabledReason}
