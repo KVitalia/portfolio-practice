@@ -31,13 +31,6 @@ const cases: CaseItem[] = [
     role: "Defined the information architecture, redesigned product pages and checkout.",
     achieved: "Simplified navigation and a shorter, clearer checkout flow.",
   },
-  {
-    number: "04",
-    title: "NAME",
-    summary: "Admin dashboard for managing bookings and daily schedules.",
-    role: "Designed the dashboard layout, appointment list, and scheduling flow.",
-    achieved: "Faster day-to-day scheduling with fewer manual errors.",
-  },
 ];
 
 export function Cases() {
