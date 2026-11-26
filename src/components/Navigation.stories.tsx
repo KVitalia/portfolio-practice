@@ -35,9 +35,9 @@ Navigation is the site menu. It aligns to the right of its container, leaving ro
 
 **Narrow screen**
 
-Below the \`md\` breakpoint the item row is replaced by a toggle button (hamburger/close icon). Opening it reveals the menu as an absolutely positioned panel anchored to the toggle button's right edge, sized to its own content (not stretched to the bar's width) — it floats over the page on a solid \`surface\` background (unlike the inline bar, which matches \`canvas\` since it doesn't overlap anything), closed by Escape, by picking an item, or by the toggle button.
+Below the \`md\` breakpoint the item row is replaced by a toggle button (hamburger/close icon). Opening it reveals the menu as an absolutely positioned panel anchored to the toggle button's right edge, sized to its own content (not stretched to the bar's width) — it floats over the page on a solid \`surface\` background (unlike the inline bar, which matches \`canvas\` since it doesn't overlap anything). The rest of the page dims and blurs behind it; closed by Escape, by picking an item, by the toggle button again, or by clicking the dimmed backdrop.
 
-**Tokens used:** \`canvas\` (the inline bar, matches the page background), \`surface\` (the floating mobile-menu panel, needs to stand out from the page behind it), \`line\` (mobile-menu panel border, decorative only), \`ink\`, \`ink-muted\`, \`accent\`, \`text-body\`, \`font-sans\`.
+**Tokens used:** \`canvas\` (the inline bar, matches the page background), \`surface\` (the floating mobile-menu panel, needs to stand out from the page behind it), \`line\` (mobile-menu panel border, decorative only), \`ink\` (also the dimmed/blurred backdrop, at low opacity), \`ink-muted\`, \`accent\`, \`text-body\`, \`font-sans\`.
 
 **When to use:** for the site's primary menu, once per page (header). Not for in-page jump links or breadcrumbs.
 

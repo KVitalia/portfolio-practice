@@ -116,6 +116,14 @@ export function Navigation({ items, activeHref, className }: NavigationProps) {
       </div>
 
       {open ? (
+        <div
+          aria-hidden="true"
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-0 bg-ink/20 backdrop-blur-sm md:hidden"
+        />
+      ) : null}
+
+      {open ? (
         <ul
           id={menuId}
           className="absolute top-full right-0 z-10 flex w-max flex-col items-end gap-2 border border-line bg-surface p-4 md:hidden"
