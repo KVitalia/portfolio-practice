@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component: `
-Button triggers a single action, in-page, on submit, or a lower-emphasis navigation-style action (\`link\` variant). For a real hyperlink to another page, use an \`<a>\` instead — \`link\` only looks like one. Pass \`href\` when the action is really a same-page anchor jump that should look like a button (e.g. "Write Me" scrolling to \`#contact\`) — it then renders an \`<a>\` with identical styling instead of a \`<button>\`.
+Button triggers a single action, in-page, on submit, or a lower-emphasis navigation-style action (\`link\` variant). For a real hyperlink to another page, use an \`<a>\` instead — \`link\` only looks like one. Pass \`href\` when the action is really a same-page anchor jump that should look like a button (e.g. "Write Me" scrolling to \`#get-in-touch\`) — it then renders an \`<a>\` with identical styling instead of a \`<button>\`.
 
 **Parameters**
 
@@ -55,7 +55,7 @@ import { Button } from "@/components/Button";
   See all work
 </Button>
 
-<Button variant="secondary" href="#contact">
+<Button variant="secondary" href="#get-in-touch">
   Write Me
 </Button>
 \`\`\`

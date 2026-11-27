@@ -5,7 +5,7 @@ import { Navigation } from "./Navigation";
 const navItems = [
   { label: "Works", href: "#works" },
   { label: "About", href: "#about" },
-  { label: "Contacts", href: "#contact" },
+  { label: "Services", href: "#services" },
 ];
 
 export function Header() {
@@ -17,7 +17,7 @@ export function Header() {
 
       <Navigation items={navItems} className="flex-1" />
 
-      <Button variant="secondary" href="#contact" className="shrink-0 whitespace-nowrap">
+      <Button variant="secondary" href="#get-in-touch" className="shrink-0 whitespace-nowrap">
         Write Me
       </Button>
     </header>

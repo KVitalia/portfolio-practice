@@ -39,7 +39,7 @@ type ButtonAsAnchorProps = ButtonOwnProps &
     AnchorHTMLAttributes<HTMLAnchorElement>,
     "disabled" | "size" | "onClick" | "onKeyDown" | "href"
   > & {
-    /** When set, renders an `<a>` styled the same way — for a button-styled action that is really a same-page anchor jump (e.g. a "Write Me" link to `#contact`). For a normal link to another page, use a plain `<a>` instead. */
+    /** When set, renders an `<a>` styled the same way — for a button-styled action that is really a same-page anchor jump (e.g. a "Write Me" link to `#get-in-touch`). For a normal link to another page, use a plain `<a>` instead. */
     href: string;
   };
 
@@ -97,7 +97,7 @@ function ChevronRightIcon({ className }: { className: string }) {
  *
  * Pass `href` to render the same styling as an `<a>` instead of a
  * `<button>` — for a button-styled same-page anchor jump (e.g. "Write Me"
- * linking to `#contact`), not for a normal link to another page.
+ * linking to `#get-in-touch`), not for a normal link to another page.
  */
 export function Button({
   variant = "main",

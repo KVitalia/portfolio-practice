@@ -6,7 +6,7 @@ const links = [
 
 export function Footer() {
   return (
-    <footer id="contact" className="flex w-full flex-col items-center gap-4 px-6 py-16 text-center sm:px-8">
+    <footer className="flex w-full flex-col items-center gap-4 px-6 py-16 text-center sm:px-8">
       <div className="w-full max-w-field border-t border-line" />
 
       <h3 className="mt-8 text-heading text-ink">Let&apos;s Connect</h3>
