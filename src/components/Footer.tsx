@@ -11,7 +11,10 @@ export function Footer() {
 
       <h3 className="mt-8 text-heading text-ink">Let&apos;s Connect</h3>
 
-      <a href="mailto:vitalia@gmail.com" className="text-lead text-ink">
+      <a
+        href="mailto:vitalia@gmail.com"
+        className="text-lead text-ink hover:text-ink-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+      >
         vitalia@gmail.com
       </a>
 
@@ -20,7 +23,7 @@ export function Footer() {
           <a
             key={link.label}
             href={link.href}
-            className="text-body text-accent underline decoration-dotted underline-offset-4"
+            className="text-body text-accent underline decoration-dotted underline-offset-4 hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
           >
             {link.label}
           </a>

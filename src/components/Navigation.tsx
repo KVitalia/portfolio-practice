@@ -105,7 +105,7 @@ export function Navigation({ items, activeHref, className }: NavigationProps) {
 
         <button
           type="button"
-          className="md:hidden inline-flex size-10 items-center justify-center text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+          className="md:hidden inline-flex size-10 items-center justify-center text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
           aria-expanded={open}
           aria-controls={menuId}
           aria-label={open ? "Close menu" : "Open menu"}
